@@ -1,0 +1,12 @@
+# Python-generated files
+.venv/
+__pycache__/
+*.pyc
+*.sqlite3
+
+
+
+# Virtual environments
+.venv
+# Файл с ключами и секретами
+.env
