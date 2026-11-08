@@ -1,9 +1,17 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .data import POSTS
 
 
-def ingex(request):
-    return HttpResponse("<h1>Мое первое задание в Django</h1>")
+def post_list(request):
+    published = []
+    page_title = "Лента публикаций"
 
+    for post in POSTS:
+        if post["is_published"]:
+            published.append(post)
 
-
+    return render(
+        request,
+        "blog/post_list.html",
+        {"title": page_title, "posts": published},
+    )
