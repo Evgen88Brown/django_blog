@@ -15,3 +15,7 @@ def post_list(request):
         "blog/post_list.html",
         {"title": page_title, "posts": published},
     )
+
+def about(request):
+    return render(request, "blog/about.html", {"title": "Обо мне"})
+

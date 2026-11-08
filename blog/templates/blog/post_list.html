@@ -1,12 +1,27 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
 </head>
 <body>
-    
+    <nav>
+        <a href="{% url 'home' %}">Главная</a>
+        <a href="{% url 'about' %}">Обо мне</a>
+    </nav>
+    <h1>{{ title }} </h1>
+
+    <section class="post-list">
+        {% for post in posts%}
+        <article class="post-card{% if post.rating > 3 %} post-card--featured{% endif %}">
+            <h2>{{ post.title}}</h2>
+            <p>{{ post.author }}</p>
+            <p>{{ post.description }}</p>
+        </article>
+        {% endfor %}
+    </section>
+
 </body>
 </html>
