@@ -1,30 +1,16 @@
+{% extends "blog/base.html" %}
 {% load static %}
-<!doctype html>
-<html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ title }}</title>
-    <link rel="stylesheet" href="{% static 'blog/css/blog.css' %}" />
-  </head>
-  <body>
-    <main class="container">
-    <nav class="nav">
-      <a href="{% url 'home' %}">Главная</a>
-      <a href="{% url 'about' %}">Обо мне</a>
-    </nav>
+{% block title %}
+{{ title }}
+{% endblock title %}
+{% block content %}
     <h1>{{ title }}</h1>
 
     <section class="post-list">
       {% for post in posts%}
-      <article
-        class="post-card{% if post.rating > 3 %} post-card--featured{% endif %}"
-      >
+      <article class="post-card{% if post.rating > 3 %} post-card--featured{% endif %}">
         {% if post.image %}
-        <img
-          src="{% static 'blog/images/' %}{{ post.image }}"
-          alt="{{ post.title }}"
-        />
+        <img src="{% static 'blog/images/' %}{{ post.image }}" alt="{{ post.title }}"/>
         {% else %}
         <p class="muted">Без иллюстрации</p>
         {% endif %}
@@ -34,6 +20,5 @@
       </article>
       {% endfor %}
     </section>
-    </main>
-  </body>
-</html>
+    
+{% endblock content %}
